@@ -1,24 +1,78 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計 - EntryExitのER図 -
 
-Things you may want to cover:
+## Users テーブル
 
-* Ruby version
+| Column             | Type     | Options                   |
+| ------------------ | -------- | ------------------------- |
+| nickname           | string   | null: false               |
+| email              | string   | null: false, unique: true |
+| encrypted_password | string   | null: false               |
+| first_name         | string   | null: false               |
+| last_name          | string   | null: false               |
+| first_name_kana    | string   | null: false               |
+| last_name_kana     | string   | null: false               |
+| birthday           | date     | null: false               |
+| work_id            | integer  | null: false               |
 
-* System dependencies
+### Association
+- has_many :homes
+- has_many :favorites
 
-* Configuration
 
-* Database creation
+## Homes テーブル
 
-* Database initialization
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| user             | references | null: false, foreign_key: true  |
+| title            | string     | null: false                     |
+| address_id       | integer    | null: false                     |
+| supervisor_id    | integer    | null: false                     |
 
-* How to run the test suite
+### Association
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Favorites テーブル
 
-* ...
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| user            | references | null: false, foreign_key: true  |
+| home            | references | null: false, foreign_key: true  |
+
+### Association
+- has_many :users
+- has_many :homes
+
+
+## Works テーブル
+
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| work            | string     |                                 |
+
+### Association
+- has_many :users
+
+
+## Addresses テーブル
+
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| address         | string     |                                 |
+
+### Association
+- has_many :homes
+
+
+## Supervisors テーブル
+
+| Column          | Type       | Options                         |
+| --------------- | ---------- | ------------------------------- |
+| supervisor      | string     |                                 |
+
+### Association
+- has_many :homes
+
+
