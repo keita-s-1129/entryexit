@@ -1,0 +1,2 @@
+<!-- app/views/supervisors/_supervisor_select.html.erb -->
+<%= form.collection_select(:supervisor_id, Supervisor.all, :id, :supervisor, {}, {class: "select-box", id: "supervisor-category"}) %>

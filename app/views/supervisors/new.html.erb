@@ -1,0 +1,36 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">現場管理者登録</h2>
+
+        <% if flash[:notice] %>
+          <div class="flash-notice">
+          <%= flash[:notice] %>  <!-- 成功メッセージの表示 -->
+          </div>
+        <% end %>
+
+        <%= form_with(model: @supervisor, local: true) do |form| %>
+          <% if form.object.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(form.object.errors.count, "error") %> prohibited this supervisor from being saved:</h2>
+              <ul>
+                <% form.object.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <!-- 名前の入力フィールド -->
+          <div class="field">
+            <%= form.label :supervisor, "現場管理者名" %>
+            <%= form.text_field :supervisor, class: "form-input" %>
+          </div>
+
+          <div class="actions">
+            <%= form.submit "登録", class: "form__btn" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

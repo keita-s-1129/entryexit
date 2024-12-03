@@ -1,25 +1,20 @@
-<%= form_with model: モデル名, local: true do |f|%>
+<%= form_with model: @home, local: true do |f|%>
   <div class="field">
-    <%= f.label :hoge, "プロトタイプの名称" %><br />
-    <%= f.text_field :hoge, id:"prototype_title" %>
+    <%= f.label :title, "物件名" %><br />
+    <%= f.text_field :title, id:"home_title" %>
   </div>
 
   <div class="field">
-    <%= f.label :hoge, "キャッチコピー" %><br />
-    <%= f.text_area :hoge, class: :form__text, id:"prototype_catch_copy" %>
+    <%= f.label :address_id, "建設地" %><br />
+    <%= render 'addresses/address_select', form: f %>
   </div>
 
   <div class="field">
-    <%= f.label :hoge, "コンセプト" %><br />
-    <%= f.text_area :hoge, class: :form__text, id:"prototype_concept" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :hoge, "プロトタイプの画像" %><br />
-    <%= f.file_field :hoge, id:"prototype_image" %>
+    <%= f.label :supervisor_id, "現場管理者" %><br />
+    <%= render 'supervisors/supervisor_select', form: f %>
   </div>
 
   <div class="actions">
-    <%= f.submit "保存する", class: :form__btn  %>
+    <%= f.submit "投稿する", class: :form__btn  %>
   </div>
 <% end %>

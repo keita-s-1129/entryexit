@@ -5,12 +5,12 @@
       <div class="greeting">
         <%= "ようこそ、" %>
         <%= link_to "#{current_user.nickname}さん！
-        <br>今回作業をされる物件名を選んで入場してください。".html_safe, class: :greeting__link%>
+        <br>今回作業をされる物件名を選んでご入場ください。
+        <br>本日も、ご安全に！！".html_safe, class: :greeting__link%>
       </div>
     <% end %>
-    
     <div class="card__wrapper">
-      <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+      <%= render partial: 'home', collection: @home %>
     </div>
   </div>
 </main>

@@ -1,0 +1,2 @@
+<!-- app/views/addresses/_address_select.html.erb -->
+<%= form.collection_select(:address_id, Address.all, :id, :address, {}, {class: "select-box", id: "address-category"}) %>

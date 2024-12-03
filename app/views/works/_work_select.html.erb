@@ -1,0 +1,2 @@
+<!-- app/views/works/_work_select.html.erb -->
+<%= form.collection_select(:work_id, Work.all, :id, :work, {}, {class: "select-box", id: "work-category"}) %>
