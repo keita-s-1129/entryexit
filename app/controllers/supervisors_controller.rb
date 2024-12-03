@@ -1,6 +1,7 @@
 class SupervisorsController < ApplicationController
 
   def new
+    @supervisors = Supervisor.all
     @supervisor = Supervisor.new
   end
 
@@ -11,6 +12,13 @@ class SupervisorsController < ApplicationController
       redirect_to new_supervisor_path
     else 
       render :new
+    end
+  end
+
+  def destroy
+    @supervisor = Supervisor.find(params[:id])
+    if @supervisor.destroy
+      redirect_to supervisor_path
     end
   end
 

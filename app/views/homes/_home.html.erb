@@ -1,8 +1,12 @@
-<div class="card">
-  <div class="card__body">
-    <%= link_to "#{home.title}", root_path, class: :card__title%>
-    <p class="card__summary">
-    <%= link_to "現場担当：#{home.supervisor.supervisor}", class: :card__user %><br>
-    <%= link_to "建設地　：#{home.address.address}", class: :card__user %>
+<%= link_to home_path(home.id), class: 'card__body' do %>
+  <div class="card">
+    <div class="card__body">
+      <div class="card__title">
+        <%= "#{home.title}" %>
+      </div>
+      <p class="card__summary">
+      <p>現場担当: <%= home.supervisor&.supervisor || "未設定" %></p>
+      <p>建設地　: <%= home.address&.address || "未設定" %></p>
+    </div>
   </div>
-</div>
+<% end %>

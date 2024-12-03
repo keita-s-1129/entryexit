@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
 
   def new
+    @works = Work.all
     @work = Work.new
   end
 
@@ -11,6 +12,13 @@ class WorksController < ApplicationController
       redirect_to new_work_path
     else 
       render :new
+    end
+  end
+
+  def destroy
+    @work = Work.find(params[:id])
+    if @work.destroy
+      redirect_to work_path
     end
   end
 
