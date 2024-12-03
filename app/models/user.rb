@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :homes, dependent: :destroy
+  belongs_to :work
 
   validates :nickname,         presence: true
   validates :first_name,       presence: true
