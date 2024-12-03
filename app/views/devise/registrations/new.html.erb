@@ -67,11 +67,13 @@
           </div>
         </div>
 
-        <%# <div class="weight-bold-text">
-          <%# 職種、工事名 %>
-          <%# <span class="indispensable">必須</span> %>
-        <%# </div> %>
-        <%# <%= f.collection_select(:work_id, Work.all, :id, :name, {}, {class:"select-box", id:"work-category"}) %>
+        <div class="field">
+          <label class="form-text-wrap">職種</label>
+          <span class="indispensable">※必須</span>
+          <div class='input-work-wrap'>
+            <%= render 'works/work_select', form: f %>
+          </div>
+        </div>
 
         <div class="actions">
           <%= f.submit "新規登録", class: :form__btn  %>
