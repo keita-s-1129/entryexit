@@ -2,7 +2,6 @@
   <div class="inner">
     <div class="form__wrapper">
       <h2 class="page-heading">職種登録</h2>
-
         <% if flash[:notice] %>
           <div class="flash-notice">
           <%= flash[:notice] %>  <!-- 成功メッセージの表示 -->
@@ -21,7 +20,7 @@
             </div>
           <% end %>
 
-          <!-- 名前の入力フィールド -->
+          <!-- 職種の入力フィールド -->
           <div class="field">
             <%= form.label :work, "職種名" %>
             <%= form.text_field :work, class: "form-input" %>
@@ -29,6 +28,19 @@
 
           <div class="actions">
             <%= form.submit "登録", class: "form__btn" %>
+          </div>
+        <% end %>
+
+        <!-- 職種（登録済）の一覧表示フィールド -->
+        <div class="category_title">
+          <%= "＜登録済みの職種＞" %>
+        </div>
+        <% @works.each do |work| %>
+          <div class="category_item">
+            <div class="category_list">
+              <%= link_to '削除', work_path(work), data: { turbo_method: :delete }, class: :delete__btn %>
+              <p><%= work.work %></p>
+            </div>
           </div>
         <% end %>
     </div>

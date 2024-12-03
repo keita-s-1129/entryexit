@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
 
   def new
+    @addresses = Address.all
     @address = Address.new
   end
 
@@ -11,6 +12,13 @@ class AddressesController < ApplicationController
       redirect_to new_address_path
     else 
       render :new
+    end
+  end
+
+  def destroy
+    @address = Address.find(params[:id])
+    if @address.destroy
+      redirect_to address_path
     end
   end
 

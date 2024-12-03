@@ -26,9 +26,21 @@
             <%= form.label :supervisor, "現場管理者名" %>
             <%= form.text_field :supervisor, class: "form-input" %>
           </div>
-
           <div class="actions">
             <%= form.submit "登録", class: "form__btn" %>
+          </div>
+        <% end %>
+
+        <!-- 現場管理者（登録済）の一覧表示フィールド -->
+        <div class="category_title">
+          <%= "＜登録済みの現場管理者＞" %>
+        </div>
+        <% @supervisors.each do |supervisor| %>
+          <div class="category_item">
+            <div class="category_list">
+              <%= link_to '削除', supervisor_path(supervisor), data: { turbo_method: :delete }, class: :delete__btn %>
+              <p><%= supervisor.supervisor %></p>
+            </div>
           </div>
         <% end %>
     </div>

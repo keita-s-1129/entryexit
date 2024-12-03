@@ -26,9 +26,21 @@
             <%= form.label :address, "建設地" %>
             <%= form.text_field :address, class: "form-input" %>
           </div>
-
           <div class="actions">
             <%= form.submit "登録", class: "form__btn" %>
+          </div>
+        <% end %>
+
+        <!-- 建設地（登録済）の一覧表示フィールド -->
+        <div class="category_title">
+          <%= "＜登録済みの建設地＞" %>
+        </div>
+        <% @addresses.each do |address| %>
+          <div class="category_item">
+            <div class="category_list">
+              <%= link_to '削除', address_path(address), data: { turbo_method: :delete }, class: :delete__btn %>
+              <p><%= address.address %></p>
+            </div>
           </div>
         <% end %>
     </div>
