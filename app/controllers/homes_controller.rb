@@ -20,6 +20,10 @@ class HomesController < ApplicationController
 
   def show
     @home = Home.find(params[:id])
+    @user = current_user  # ログイン中のユーザーを取得
+    
+    # 現在「入場中」のユーザーを取得
+    @users_in_home = UserHome.where(home: @home, status: '入場中').map(&:user)
   end
 
   def edit

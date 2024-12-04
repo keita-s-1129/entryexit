@@ -13,8 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string  :last_name_kana,     null: false
       t.date    :birthday,           null: false
       t.integer :work_id,            null: false
-      
-
+      t.string  :status, default: "退場中" # デフォルト値を設定
 
 
       ## Recoverable

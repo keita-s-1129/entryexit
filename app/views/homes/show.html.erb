@@ -9,21 +9,50 @@
       <div class="home__category-wrapper">
         <p>現場担当： <%= @home.supervisor&.supervisor || "未設定" %></p>
         <p>建設地： <%= @home.address&.address || "未設定" %></p>
-      </div>
+      </div><br>
 
-      <% if user_signed_in? && current_user.id == @home.user_id %>
-        <div class="prototype__manage">
-          <%= link_to "編集する", edit_home_path(@home.id), class: :home__btn %>
-          <%= link_to "削除する", home_path(@home.id), data: { turbo_method: :delete }, class: :home__btn %>
+      <p class="status_display">
+        <%= user_signed_in? ? current_user.nickname : "ゲストさん！「ログイン」もしくは「ユーザー登録」をすると、入退場出来ます。" %>
+      </p>
+
+      <%# 以下、入退場機能 %>
+      <% if user_signed_in? %>
+        <div class="status">
+          <% user_home = UserHome.find_by(user: current_user, home: @home) %>
+          <p id="status" class="status_display">
+            あなたの現在の状況：
+            <span class="<%= user_home&.status == '入場中' ? 'status-entry' : 'status-exit' %>" style="font-size: 1.5em;">
+              <%= user_home&.status || "退場中" %>
+            </span>
+          </p>
+
+
+          <div class="status_btn">
+            <%= button_to '入場する', update_status_home_path(@home, status: '入場中'), method: :patch, class: 'entryexit_btn' %>
+            <%= button_to '退場する', update_status_home_path(@home, status: '退場中'), method: :patch, class: 'entryexit_btn' %>
+          </div>
         </div>
       <% end %>
 
-
-      <div class="prototype__comments">
-
-        <%# 以下、入退場機能 %>
-
+      <!-- 現在入場中のユーザーの表示 -->
+      <div class="entry_users">
+        <p class="entry_head">現在の入場者</p>
+        <ul>
+          <% @users_in_home.each do |user| %>
+            <li><%= user.nickname %> 様</li>
+          <% end %>
+        </ul>
       </div>
+
+      <%= link_to '物件一覧へ戻る', homes_path, class: 'back-to-index-btn' %>
+
+      <% if user_signed_in? %>
+        <div class="prototype__manage">
+          <%= link_to "物件編集", edit_home_path(@home.id), class: :home__btn %>
+          <%= link_to "物件削除", home_path(@home.id), data: { turbo_method: :delete }, class: :home__btn %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </main>
