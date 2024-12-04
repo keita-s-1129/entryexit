@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :homes, dependent: :destroy
+  has_many   :user_homes
+  has_many   :homes, dependent: :destroy, through: :user_homes
   belongs_to :work
 
   validates :nickname,         presence: true

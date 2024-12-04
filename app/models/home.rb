@@ -1,4 +1,7 @@
 class Home < ApplicationRecord
+  has_many :user_homes
+  has_many :users, through: :user_homes
+
   belongs_to :user
   belongs_to :address
   belongs_to :supervisor

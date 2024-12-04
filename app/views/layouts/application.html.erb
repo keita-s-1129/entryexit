@@ -26,6 +26,7 @@
               <%= link_to "職種登録", new_work_path, class: :nav__btn %>
               <%= link_to "現場管理者登録", new_supervisor_path, class: :nav__btn %>
               <%= link_to "建設地登録", new_address_path, class: :nav__btn %>
+              <%= link_to "本人情報", user_path(current_user), class: :nav__btn %>
             </div>
           <%# // ログインしているときは上記を表示するようにしましょう %>
           <% else %>
