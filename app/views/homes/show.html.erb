@@ -12,7 +12,7 @@
       </div><br>
 
       <p class="status_display">
-        <%= user_signed_in? ? current_user.nickname : "ゲストさん！「ログイン」もしくは「ユーザー登録」をすると、入退場出来ます。" %>
+        <%= user_signed_in? ? "#{current_user.nickname}さん" : "ゲストさん！「ログイン」もしくは「ユーザー登録」をすると、入退場出来ます。" %>
       </p>
 
       <%# 以下、入退場機能 %>
@@ -39,7 +39,7 @@
         <p class="entry_head">現在の入場者</p>
         <ul>
           <% @users_in_home.each do |user| %>
-            <li><%= user.nickname %> 様</li>
+            <li><%= user.nickname %> さんが入場中</li>
           <% end %>
         </ul>
       </div>
