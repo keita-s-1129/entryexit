@@ -447,18 +447,34 @@ a {
   }
 }
 
- /* スマホ表示 */
-@media (max-width: 599px) {
-  .logo {
-    width: 120px;
+ /* スマホ対応表示 */
+@media (max-width: 800px) {
+  
+  .nav {
+    display: flex;
+    flex-direction: column; /* 子要素を上下に配置 */
+    align-items: center; /* 中央揃え（オプション） */
   }
+
   .page-heading {
     font-size: 20px;
   }
+
+  .greeting{
+    font-size: 14px;
+  }
+
   .card {
     width: 100%;
     margin-bottom: 60px;
   }
+
+  .card__body {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content; /* 要素の幅を必要最小限に調整 */
+  }
+
   .card__title {
     font-size: 18px;
   }
