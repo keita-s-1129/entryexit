@@ -3,6 +3,13 @@ class HomesController < ApplicationController
 
   def index
     @home = Home.includes(:user)
+    
+    @addresses = Address.all # 検索用のプルダウンに表示するための住所一覧
+    if params[:address_id].present?
+      @homes = Home.where(address_id: params[:address_id])
+    else
+      @homes = Home.all
+    end
   end
 
   def new
@@ -23,7 +30,7 @@ class HomesController < ApplicationController
     @user = current_user  # ログイン中のユーザーを取得
     
     # 現在「入場中」のユーザーを取得
-    @users_in_home = UserHome.where(home: @home, status: '入場中').map(&:user)
+    @users_in_home = UserHome.where(home: @home).order(entry_time: :asc)
   end
 
   def edit

@@ -36,10 +36,20 @@
 
       <!-- 現在入場中のユーザーの表示 -->
       <div class="entry_users">
-        <p class="entry_head">現在の入場者</p>
+        <p class="entry_head">本日の入場者</p>
         <ul>
-          <% @users_in_home.each do |user| %>
-            <li><%= user.nickname %> さんが入場中</li>
+          <% @users_in_home.each do |user_home| %>
+            <% if user_home.entry_time.present? %> <!-- entry_timeが存在する場合のみ表示 -->
+              <li>
+                <%= user_home.user.nickname %> さん
+                <span>[入: <%= user_home.entry_time&.strftime("%H:%M") %>]</span>
+                <% if user_home.exit_time.present? %> 
+                  <span>[退: <%= user_home.exit_time.strftime("%H:%M") %>]</span>
+                <% else %>
+                  <span>[退: ---]</span> <!-- 退場時刻がない場合は「---」を表示 -->
+                <% end %>
+              </li>
+            <% end %> <!-- entry_timeがない場合は表示しない -->
           <% end %>
         </ul>
       </div>

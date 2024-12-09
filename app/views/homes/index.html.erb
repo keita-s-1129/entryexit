@@ -5,12 +5,24 @@
       <div class="greeting">
         <%= image_tag("supervisor.png", alt: "Supervisor Image", class: "supervisor-image") %>
         <%= link_to "ようこそ、#{current_user.nickname}さん！
-        <br>今回作業をされる物件名を選んでご入場ください。
-        <br>本日も、ご安全に！！".html_safe, class: :greeting__link%>
+        <br>作業される物件を選び、ご入場ください。
+        <br>本日も、ご安全に！".html_safe, class: :greeting__link%>
       </div>
     <% end %>
+
+    <!-- 検索フォームを追加 -->
+    <div class="search-form">
+      <%= form_with(url: homes_path, method: :get, local: true) do %>
+        <div class="form-group">
+          <%= image_tag("search.png", alt: "Search Image", class: "search-image") %>
+          <%= select_tag :address_id, options_from_collection_for_select(@addresses, :id, :address, params[:address_id]), prompt: "建設地を選択" %>
+          <%= submit_tag "物件検索", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="card__wrapper">
-      <%= render partial: 'home', collection: @home %>
+      <%= render partial: 'home', collection: @homes %>
     </div>
   </div>
 </main>
