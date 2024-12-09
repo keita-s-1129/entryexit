@@ -478,13 +478,33 @@ a {
   .card__title {
     font-size: 18px;
   }
+
   .card__summary {
     font-size: 14px;
   }
+
   .prototype_image{
     width: 100%;
   }
+
   .table{
     width: 100%;
+  }
+
+  .prototype__hedding{
+    font-size: 60px;
+  }
+
+  .status {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5 5 5 5;
+    margin: 0;
+  }
+
+  .entry_users {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 8px;
   }
 }
