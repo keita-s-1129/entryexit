@@ -57,6 +57,11 @@ a {
   margin-top: 10px;
 }
 
+.exit_logo {
+  width: 40px;
+  margin-top: 10px;
+}
+
 .nav__btn{
   display: inline-block;
   padding: 0.5em 1.6em;
@@ -75,17 +80,58 @@ a {
   background: #ffec9e;
 }
 
-.nav__logout{
-  display: inline-block;
-  margin-top: 15px;
-  padding: 0.4em 1.6em;
-  font-size: 0.8em;
-  color: #000000;
-  text-decoration: none;
-  user-select: none;
+/* メニューボタンのスタイル */
+.menu__button {
+  background-color: #000000;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 30px;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 5px;
 }
-.nav__logout:hover{
-  opacity: 0.5;
+
+/* メニューリストのスタイル */
+.menu__list {
+  list-style: none;
+  margin: 0px;
+  padding: 22px;
+  display: none; /* 初期は非表示 */
+  position: absolute;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+/* メニューリストの表示設定（ホバー時に表示） */
+.menu:hover .menu__list {
+  display: block;
+}
+
+/* メニュー項目のスタイル */
+.menu__list li {
+  border-bottom: 1px solid #dadada;
+}
+
+.menu__list li:last-child {
+  border-bottom: none; /* 最後の要素は線を消す */
+}
+
+/* メニュー項目のリンクスタイル */
+.menu__list li a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.menu__list li a:hover {
+  background-color: #ffc888;
+}
+
+/* メニューボタン画像のスタイル */
+.menu__image {
+  width: 30px; /* 画像の幅を調整 */
+  height: 30px; /* 画像の高さを調整 */
 }
 
 /* フォーム周り */
@@ -135,6 +181,20 @@ a {
 }
 
 /* 物件一覧表示（トップ）画面 */
+
+body::before {
+  content: "";
+  background-image: url('/assets/top_image.png'); /* 画像のパス */
+  background-repeat: no-repeat;
+  background-position: top right; /* 右上に配置 */
+  opacity: 0.2; /* 透明度を設定 */
+  position: absolute;
+  top: 120px;
+  right: 30px;
+  width: 1000px; /* 画像の幅を調整 */
+  height:600px; /* 画像の高さを調整 */
+  z-index: -1; /* 他の要素に影響しないように、背面に配置 */
+}
 
 .supervisor-image{
   width: 90px; /* 幅を指定 */
@@ -221,7 +281,7 @@ a {
 .search-form select {
   font-size: 12px;     /* フォントサイズを大きく */
   padding: 5px;       /* 内側の余白を広げる */
-  width: 80%;         /* 親要素に合わせて幅を広げる */
+  width: 20%;         /* 親要素に合わせて幅を広げる */
   height: 30px;        /* 高さを調整してボタンを大きく */
   border-radius: 5px;  /* 角を丸くする（任意） */
   border: 1px solid #ccc; /* 境界線を設定 */
@@ -231,7 +291,7 @@ a {
 .btn-primary{
   font-size: 12px;     /* フォントサイズを大きく */
   padding: 5px;       /* 内側の余白を広げる */
-  width: 30%;         /* 親要素に合わせて幅を広げる */
+  width: 10%;         /* 親要素に合わせて幅を広げる */
   height: 30px;        /* 高さを調整してボタンを大きく */
   border-radius: 5px;  /* 角を丸くする（任意） */
   border: 1px solid #000000; /* 境界線を設定 */
@@ -294,6 +354,7 @@ a {
 
 .status{
   border: 7px double #000000;
+  background-color: #fff;
   width: 50%;
   margin: 0 auto; /* 左右中央に配置 */
 }
@@ -368,6 +429,7 @@ a {
 
 .entry_users{
   border: 1px solid #000000;
+  background-color: #fff;
   width: 50%;
   margin: 20px auto; /* 左右中央に配置 */
   text-align: center;
@@ -490,6 +552,20 @@ a {
     align-items: center; /* 中央揃え（オプション） */
   }
 
+  .nav__left{
+    display: flex;
+  }
+
+  .logo{
+    width: 85%;
+    display: block; /* インライン要素であるimgをブロック要素に */
+    margin: 0 auto; /* 左右のマージンを自動に設定して中央揃え */
+  }
+
+  .exit_logo {
+    width: 0%;
+  }
+
   .search-form {
     display: flex;
     justify-content: center;
@@ -501,6 +577,7 @@ a {
 
   .greeting{
     font-size: 14px;
+    margin-top: -25px;
   }
 
   .card {
@@ -546,24 +623,42 @@ a {
     box-sizing: border-box;
     margin-top: 8px;
   }
-}
 
-.search-form select {
-  font-size: 12px;     /* フォントサイズを大きく */
-  padding: 5px;       /* 内側の余白を広げる */
-  width: 120px;         /* 親要素に合わせて幅を広げる */
-  height: 30px;        /* 高さを調整してボタンを大きく */
-  border-radius: 5px;  /* 角を丸くする（任意） */
-  border: 1px solid #ccc; /* 境界線を設定 */
-  margin: 0 5px 0 5px;
-}
+  .nav__right{
+    margin-top: 15px;
+  }
 
-.btn-primary{
-  font-size: 12px;     /* フォントサイズを大きく */
-  padding: 5px;       /* 内側の余白を広げる */
-  width: 80px;         /* 親要素に合わせて幅を広げる */
-  height: 30px;        /* 高さを調整してボタンを大きく */
-  border-radius: 5px;  /* 角を丸くする（任意） */
-  border: 1px solid #000000; /* 境界線を設定 */
-  margin: 0 5px 0 5px;
+  .menu__button{
+    background-color: #000000;
+    color: #fff;
+    padding: 5px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  body::before {
+    width: 0%; /* トップ画面の背景無し */
+  }
+
+  .search-form select {
+    font-size: 12px;     /* フォントサイズを大きく */
+    padding: 5px;       /* 内側の余白を広げる */
+    width: 60%;         /* 親要素に合わせて幅を広げる */
+    height: 30px;        /* 高さを調整してボタンを大きく */
+    border-radius: 5px;  /* 角を丸くする（任意） */
+    border: 1px solid #ccc; /* 境界線を設定 */
+    margin: 0 5px 0 5px;
+  }
+  
+  .btn-primary{
+    font-size: 12px;     /* フォントサイズを大きく */
+    padding: 5px;       /* 内側の余白を広げる */
+    width: 30%;         /* 親要素に合わせて幅を広げる */
+    height: 30px;        /* 高さを調整してボタンを大きく */
+    border-radius: 5px;  /* 角を丸くする（任意） */
+    border: 1px solid #000000; /* 境界線を設定 */
+    margin: 0 5px 0 5px;
+  }
 }
