@@ -41,8 +41,8 @@ a {
   margin-bottom: 48px;
   border-bottom: 1px solid #000;
   padding: 20px 0;
-
 }
+
 .inner {
   width: 1024px;
   margin: 0 auto;
@@ -192,10 +192,11 @@ body::before {
   background-position: top right; /* 右上に配置 */
   opacity: 0.2; /* 透明度を設定 */
   position: absolute;
-  top: 120px;
-  right: 60px;
-  width: 1000px; /* 画像の幅を調整 */
-  height:600px; /* 画像の高さを調整 */
+  top: 100px;
+  right: 150px;
+  background-size: contain; /* 画像サイズを縮小して収める */
+  width: 900px; /* 画像の幅を調整 */
+  height:500px; /* 画像の高さを調整 */
   z-index: -1; /* 他の要素に影響しないように、背面に配置 */
 }
 
@@ -229,7 +230,7 @@ body::before {
 }
 .card {
   background-color: #ffda9e;
-  width: 300px; /* ここで幅を固定 */
+  width: 300px; /* 幅を固定 */
   margin-bottom: 10px;
   padding: 35px;
   border: 1px solid #000;
@@ -519,6 +520,7 @@ body::before {
 /* フッター */
 
 .footer {
+  width: 100%;
   background-color: #ffda9e;
   padding: 10px 0;
 }

@@ -32,12 +32,12 @@
                   <li><%= link_to "物件登録", new_home_path, class: :nav__btn %></li>
                   <li><%= link_to "現場管理者登録", new_supervisor_path, class: :nav__btn %></li>
                   <li><%= link_to "建設地登録", new_address_path, class: :nav__btn %></li>
+                  <li><%= link_to "職種登録", new_work_path, class: :nav__btn %></li>
                   <li><%= link_to "本人情報", user_path(current_user), class: :nav__btn %></li>
                   <li><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav__btn %></li>
                 <% else %>
                   <li><%= link_to "ログイン", new_user_session_path, class: :nav__btn %></li>
                   <li><%= link_to "新規登録", new_user_registration_path, class: :nav__btn %></li>
-                  <li><%= link_to "職種登録", new_work_path, class: :nav__btn %></li>
                 <% end %>
               </ul>
             </div>
