@@ -8,9 +8,9 @@ Entry Exit
 https://entryexit.onrender.com
 
 # テスト用アカウント
-・BASIC認証ID：  
-・BASIC認証パスワード：  
-・メールアドレス：  
+・BASIC認証ID：admin  
+・BASIC認証パスワード：2222  
+・メールアドレス：test@test  
 ・パスワード：  
 
 # 利用方法
