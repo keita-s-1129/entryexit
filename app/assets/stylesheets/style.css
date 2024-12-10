@@ -193,7 +193,7 @@ body::before {
   opacity: 0.2; /* 透明度を設定 */
   position: absolute;
   top: 120px;
-  right: 30px;
+  right: 60px;
   width: 1000px; /* 画像の幅を調整 */
   height:600px; /* 画像の高さを調整 */
   z-index: -1; /* 他の要素に影響しないように、背面に配置 */
