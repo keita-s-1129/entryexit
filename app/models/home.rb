@@ -1,5 +1,5 @@
 class Home < ApplicationRecord
-  has_many :user_homes
+  has_many :user_homes, dependent: :destroy
   has_many :users, through: :user_homes
 
   belongs_to :user
