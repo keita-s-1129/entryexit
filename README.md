@@ -11,7 +11,7 @@ https://entryexit.onrender.com
 ・BASIC認証ID：admin  
 ・BASIC認証パスワード：2222  
 ・メールアドレス：test@test  
-・パスワード：  
+・パスワード：112233  
 
 # 利用方法
 ## 物件登録
