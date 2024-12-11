@@ -8,12 +8,12 @@ class User < ApplicationRecord
   has_many   :homes, dependent: :destroy, through: :user_homes
   belongs_to :work
 
-  validates :nickname,         presence: true
-  validates :first_name,       presence: true
-  validates :last_name,        presence: true
-  validates :first_name_kana,  presence: true
-  validates :last_name_kana,   presence: true
-  validates :birthday,         presence: true
-  validates :work_id,          numericality:  { other_than: 1, only_integer: true, message: "can't be blank" }
+  validates :nickname,         presence: { message: "が空欄です！" }
+  validates :first_name,       presence: { message: "が空欄です！" }
+  validates :last_name,        presence: { message: "が空欄です！" }
+  validates :first_name_kana,  presence: { message: "が空欄です！" }
+  validates :last_name_kana,   presence: { message: "が空欄です！" }
+  validates :birthday,         presence: { message: "が空欄です！" }
+  validates :work_id,          numericality:  { message: "職種を選択して下さい！" }
 
 end
