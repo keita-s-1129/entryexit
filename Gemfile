@@ -72,6 +72,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'devise-i18n'
 
 group :production do
   gem 'pg'

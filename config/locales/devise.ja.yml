@@ -1,0 +1,31 @@
+ja:
+  date:
+    formats:
+      default: "%Y年%m月%d日"
+    order:
+      - :year
+      - :month
+      - :day
+  errors:
+    messages:
+      blank: "が空欄です！" # 空欄エラーの共通メッセージ
+  activerecord:
+    attributes:
+      user:
+        email: "メールアドレス（ユーザーID）"
+        password: "パスワード"
+        nickname: "ユーザー名"
+        first_name: "お名前（名）"
+        last_name: "お名前（姓）"
+        first_name_kana: "フリガナ（名）"
+        last_name_kana: "フリガナ（姓）"
+        birthday: "生年月日"
+  devise:
+    failure:
+      unauthenticated: 'ログインしてください。'
+    registrations:
+      signed_up: 'アカウント登録が完了しました。'
+    sessions:
+      signed_in: 'ログインしました。'
+    mailer:
+      confirmation_instructions: 'メールアドレスの確認について'

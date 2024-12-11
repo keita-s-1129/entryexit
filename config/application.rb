@@ -15,6 +15,9 @@ module Entryexit
     config.time_zone = 'Asia/Tokyo' # 日本時間に設定
     config.active_record.default_timezone = :local # ローカル時間で保存
 
+     # ロケールを日本語に設定
+     config.i18n.default_locale = :ja
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
